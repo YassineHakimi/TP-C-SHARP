@@ -11,6 +11,8 @@ namespace Domaine
         public string Image { get; set; }
         public string Description { get; set; }
         public ICollection<Produit> produits { get; set; }
-        public Superette Superette { get; set; }    
+        public Superette Superette { get; set; }
+
+        
     }
 }

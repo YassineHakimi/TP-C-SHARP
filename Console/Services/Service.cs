@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace Console.Services
 {
-    public class Services
+    public class Service
     {
+        // Gets products where the price > 50
         public List<Cosmétique> GetProduitsByPrice(Superette superette)
         {
             //var rec = from p in superette.Produits
@@ -32,6 +33,7 @@ namespace Console.Services
             return superette.Produits.Count;
         }
 
+        // Returns the image of the logo of a of cosmétique of type perfum
         public string GetParfum(Superette superette)
         {
             return superette.Produits.OfType<Cosmétique>().Where(p => p.Type == TypeCos.Parfum).FirstOrDefault()?.Logo.Image;

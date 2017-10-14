@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Console.Services;
+
 
 namespace Console
 {
@@ -13,62 +15,90 @@ namespace Console
     {
         static void Main(string[] args)
         {
-            Produit p = new Produit
+            Superette s = new Superette
             {
                 Id = 1,
-                Nom = "Lait",
-                Marque = "Délice",
-                Prix = 1.10f
+                Adresse = "Ghazela",
+                Nom = "Chez Souhail",
+                NumTel = "007",
+                Logo = new Logo
+                {
+                    Image = "img1",
+                    Description = "description"
+                }
             };
 
-            Alimentaire a = new Alimentaire
+            Alimentaire a1 = new Alimentaire
             {
-                Id = 2,
-                Nom = "Souhail",
-                Marque = "Human ?!",
-                Prix = 0.0f,
+                Id = 1,
+                Marque = "Délice",
+                Nom = "Lait",
+                Prix = 35,
+                Logo = new Logo
+                {
+                    Image = "lait1",
+                    Description = "lait"
+                },
                 DateExp = DateTime.Now
             };
 
-            Cosmétique x = new Cosmétique
-            {
-                Id = 3,
-                Nom = "sqdsdsq",
-                Marque = "qsdqsdqsdqsd",
-                Prix = 3f,
-                Type = Domaine.TypeCos.Type1
-            };
-
-            List<Produit> products = new List<Produit> { p, a };
-
-            Superette sup = new Superette
-            {
-                Id = 1,
-                Nom = "Chez Souhail",
-                Adresse = "Bizerte",
-                NumTel = "007",
-                Produits = products
-            };
-
-            Superette sup2 = new Superette
+            Alimentaire a2 = new Alimentaire
             {
                 Id = 2,
-                Nom = "Chez sousou",
-                Adresse = "ok",
-                NumTel = "007",
-                Produits = sup.Produits
+                Marque = "Délice",
+                Nom = "Délio",
+                Prix = 67,
+                Logo = new Logo
+                {
+                    Image = "lait1",
+                    Description = "lait"
+                },
+                DateExp = DateTime.Now
             };
 
-            
+            Alimentaire a3 = new Alimentaire
+            {
+                Id = 3,
+                Marque = "Délice",
+                Nom = "Yaourt",
+                Prix = 88,
+                Logo = new Logo
+                {
+                    Image = "lait1",
+                    Description = "lait"
+                },
+                DateExp = DateTime.Now
+            };
 
+            Cosmétique c1 = new Cosmétique
+            {
+                Id = 5,
+                Marque = "c1",
+                Nom = "c1",
+                Prix = 300,
+                Type = TypeCos.Parfum,
+                Logo = new Logo
+                {
+                    Image = "c1",
+                    Description = "c1"
+                }
+            };
 
-            System.Console.WriteLine(a.Id + " " + a.Nom + " ");
+            s.Produits.Add(a1);
+            s.Produits.Add(a2);
+            s.Produits.Add(a3);
+            s.Produits.Add(c1);
 
-            System.Console.WriteLine(sup2.Produits.Count);
+            Service services = new Service();
+            System.Console.WriteLine(services.GetParfum(s));
+
+            var res = services.GetProduitsByPrice(s);
+            foreach (var p in res)
+            {
+                System.Console.WriteLine(p.Nom);
+            }
 
             System.Console.ReadKey();
-
-            //Logo logo = new Logo { Image = "Kalb", Description = "qsjdqsdjqd" };
         }
     }
 }

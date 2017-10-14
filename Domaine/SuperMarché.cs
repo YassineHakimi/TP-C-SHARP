@@ -13,6 +13,11 @@ namespace Domaine
         public string Nom { get; set; }
         public string NumTel { get; set; }
         public ICollection<Produit> Produits { get; set; }
-        public Logo Logo { get; set; }  
+        public Logo Logo { get; set; }
+
+        public Superette()
+        {
+            this.Produits = new List<Produit>();
+        }
     }
 }
