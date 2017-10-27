@@ -16,6 +16,13 @@ namespace Domaine
 
         public Logo Logo { get; set; }
 
+        public virtual string Afficher()
+        {
+            return "Le nom : " +
+                Nom + " Son Prix : " +
+                Prix + " Sa Marque : " + Marque;
+        }
+
 
     }
 }

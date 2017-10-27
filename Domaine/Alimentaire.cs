@@ -9,5 +9,7 @@ namespace Domaine
     public class Alimentaire : Produit
     {
         public DateTime DateExp { get; set; }
+
+
     }
 }

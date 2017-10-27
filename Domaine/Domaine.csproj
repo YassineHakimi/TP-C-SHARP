@@ -43,6 +43,7 @@
     <Compile Include="Alimentaire.cs" />
     <Compile Include="Cosmétique.cs" />
     <Compile Include="Logo.cs" />
+    <Compile Include="PrixException.cs" />
     <Compile Include="Produit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SuperMarché.cs" />

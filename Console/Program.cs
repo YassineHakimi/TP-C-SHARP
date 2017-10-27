@@ -20,7 +20,7 @@ namespace Console
                 Id = 1,
                 Adresse = "Ghazela",
                 Nom = "Chez Souhail",
-                NumTel = "007",
+                NumTel = 007,
                 Logo = new Logo
                 {
                     Image = "img1",
@@ -76,28 +76,99 @@ namespace Console
                 Marque = "c1",
                 Nom = "c1",
                 Prix = 300,
-                Type = TypeCos.Parfum,
-                Logo = new Logo
-                {
-                    Image = "c1",
-                    Description = "c1"
-                }
+                Type = TypeCos.Parfum
             };
 
+            // Affectation à une liste
             s.Produits.Add(a1);
             s.Produits.Add(a2);
             s.Produits.Add(a3);
             s.Produits.Add(c1);
 
-            Service services = new Service();
-            System.Console.WriteLine(services.GetParfum(s));
+            // if p>50 => afficher
+            // Avec foreach
+            //foreach(Produit p in s.Produits)
+            //{
+            //    if(p.Prix > 50)
+            //    {
+            //        System.Console.WriteLine(p.Afficher());
+            //    }
+            //}
 
-            var res = services.GetProduitsByPrice(s);
-            foreach (var p in res)
+            // Avec Lambda exp
+            //var list = s.Produits.Where(p => p.Prix > 50 
+            //                         && p.Marque == "Délice");
+
+            // Afficher la marque du premier produit 
+            //System.Console.WriteLine(list.FirstOrDefault().Marque);
+
+            // Avec Linq
+            //var l = from p in s.Produits
+            //where p.Prix > 50 && p.Marque == "Délice"
+            //select p;
+
+
+            // if produit of type gel and prix > 50
+            //var gels = from item in s.Produits.OfType<Cosmétique>()
+            //where item.Prix > 50 && item.Type == TypeCos.Gel
+            //select item;
+
+            //foreach(Cosmétique c in gels)
+            //{
+            //    System.Console.WriteLine(c.Afficher());
+            //}
+
+            //List<float> ListePrix = new List<float>
+            //{
+            //    a1.Prix, a2.Prix, a3.Prix, c1.Prix
+            //};
+
+            //List<float> ListePrix = new List<float>();
+
+            //foreach (Produit p in s.Produits)
+            //{
+            //    ListePrix.Add(p.Prix);
+            //}
+
+            //// Pour ordonner la liste asc
+            //ListePrix.Sort();
+            //// Pour la rendre ordonnée en dsc
+            //ListePrix.Reverse();
+
+            //foreach(float p in ListePrix)
+            //{
+            //    System.Console.WriteLine(p);
+            //}
+
+            //foreach(Produit p in list)
+            //{
+            //    System.Console.WriteLine(p.Afficher());
+            //}
+
+
+            //Service services = new Service();
+            //System.Console.WriteLine(services.GetParfum(s));
+
+            //var res = services.GetProduitsByPrice(s);
+            //foreach (var p in res)
+            //{
+            //    System.Console.WriteLine(p.Nom);
+            //}
+
+            a1.Prix = float.Parse(System.Console.ReadLine());
+            
+            try
             {
-                System.Console.WriteLine(p.Nom);
+                if (a1.Prix < 0)
+                {
+                    throw new PrixException(a1.Nom);
+                }
             }
-
+            catch(PrixException ex)
+            {
+                System.Console.WriteLine(ex.ToString());
+            }
+            
             System.Console.ReadKey();
         }
     }
